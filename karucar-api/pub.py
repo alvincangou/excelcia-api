@@ -5,7 +5,7 @@ from google.oauth2 import service_account
 
 #os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 cred_info = json.loads(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
-cred= service_account.Credentials.from_service_account(cred_info)
+cred= service_account.Credentials.from_service_account_info(cred_info)
 
 
 project_id = os.getenv("PROJECT_ID")
