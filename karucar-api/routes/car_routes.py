@@ -2,6 +2,7 @@ from flask import request, jsonify
 from . import main
 from models import db
 from models.car import Car
+from pub import publish
 
 @main.route('/cars', methods=['POST'])
 def add_car():
@@ -9,7 +10,10 @@ def add_car():
     new_car = Car(make=data['make'], model=data['model'], year=data['year'])
     db.session.add(new_car)
     db.session.commit()
-    return jsonify({"message": "Car added successfully!"}), 201
+    file_url = data["file_url"]
+    future = publish(file_url, new_car.id)
+    
+    return jsonify({"message": f"Car added successfully with id {new_car.id}"}), 201
 
 @main.route('/cars', methods=['GET'])
 def get_cars():

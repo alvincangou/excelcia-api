@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from config import Config
 from models import db
 from routes import main
+from pub import publish
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
