@@ -2,9 +2,9 @@ import os
 from google.cloud import pubsub_v1
 import json
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'credentials/karucar-dc022bee6eac.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'credentials/vincent-exelcia-4b64aafe9d15.json'
 
-project_id = 'karucar'
+project_id = os.getenv("PROJECT_ID")
 topic_id = 'cars'
 subscription_id = 'cars-sub'
 
